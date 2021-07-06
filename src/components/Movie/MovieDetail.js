@@ -21,7 +21,7 @@ export class MovieDetail extends Component {
         `https://omdbapi.com/?apikey=6332b1e1&t=${this.props.match.params.movieTitle}`
       );
 
-      this.setState({
+      this.setState({//save the info from the api call
         Actors: result.data.Actors,
         Awards: result.data.Awards,
         Country: result.data.Country,
@@ -40,7 +40,7 @@ export class MovieDetail extends Component {
     }
   }
 
-  showMovieDetail = () => {
+  showMovieDetail = () => {//post the data from the state
     return (
       <div style={{ display: "flex" }}>
         <div>

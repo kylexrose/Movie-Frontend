@@ -8,14 +8,14 @@ import "./App.css";
 
 export class App extends Component {
   state = {
-    user: null,
+    user: null,//initial state of current user
   };
 
   componentDidMount() {
     let getJwtToken = window.localStorage.getItem("jwtToken");
 
     if (getJwtToken) {
-      const currentTime = Date.now() / 1000;
+      const currentTime = Date.now() / 1000;//check if token is still valid
 
       let decodedJWTToken = jwtDecode(getJwtToken);
 
@@ -35,7 +35,7 @@ export class App extends Component {
     }
   }
 
-  handleUserLogin = (user) => {
+  handleUserLogin = (user) => {//set current user
     this.setState({
       user: {
         email: user.email,
@@ -43,7 +43,7 @@ export class App extends Component {
     });
   };
 
-  handleUserLogout = () => {
+  handleUserLogout = () => {//remove the token in the local storage
     window.localStorage.removeItem("jwtToken");
     this.setState({
       user: null,
@@ -55,7 +55,7 @@ export class App extends Component {
       <>
         <ToastContainer position="top-center" />
 
-        <MainRouter
+        <MainRouter //this is the main layout
           user={this.state.user}
           handleUserLogin={this.handleUserLogin}
           handleUserLogout={this.handleUserLogout}

@@ -2,13 +2,13 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import checkIfUserIsAuth from "../utils/checkIfUserIsAuth";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ component: Component, ...rest }) => {// passes in the component and standard props
   return (
     <Route
       {...rest}
       render={(routerProps) =>
         checkIfUserIsAuth() ? (
-          <Component {...routerProps} />
+          <Component {...routerProps} />//renders the component with the global props
         ) : (
           <Redirect to="/login" />
         )

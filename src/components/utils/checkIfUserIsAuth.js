@@ -6,7 +6,7 @@ const checkIfUserIsAuth = () => {
   //if expired return false
   //else return true
 
-  let getJwtToken = window.localStorage.getItem("jwtToken");
+  let getJwtToken = window.localStorage.getItem("jwtToken");//check if the token is valid
 
   if (getJwtToken) {
     const currentTime = Date.now() / 1000;

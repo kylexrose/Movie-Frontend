@@ -8,7 +8,7 @@ export class Movie extends Component {
     movieArray: [],
   };
 
-  handleOnChange = (event) => {
+  handleOnChange = (event) => {//set movie state to text box value
     this.setState({
       movie: event.target.value,
     });
@@ -17,7 +17,7 @@ export class Movie extends Component {
   onSubmit = async (event) => {
     try {
       let result = await axios.get(
-        `https://omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API}&s=${this.state.movie}`
+        `https://omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API}&s=${this.state.movie}`//run a query on the api
       );
 
       console.log(result);

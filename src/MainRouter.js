@@ -10,7 +10,7 @@ import MovieDetail from "./components/Movie/MovieDetail";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 const MainRouter = (props) => {
-  return (
+  return ( //bring in all components
     <Router>
       <Nav user={props.user} handleUserLogout={props.handleUserLogout} />
       <>
@@ -30,7 +30,7 @@ const MainRouter = (props) => {
         />
         {/* /api/user/user-detail/get-user-by-id/:id */}
         {/* <Route exact path="/movie-detail/:movieTitle" component={MovieDetail} /> */}
-        <PrivateRoute
+        <PrivateRoute //this allows the passing of standard props without explicitly coding them
           exact
           path="/movie-detail/:movieTitle"
           component={MovieDetail}

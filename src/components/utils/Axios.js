@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios";//sets axios case that checks if site is in development or published
 
 const Axios = axios.create({
   baseURL:

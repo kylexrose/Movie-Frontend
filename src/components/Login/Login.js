@@ -26,13 +26,13 @@ export class Login extends Component {
     }
   }
 
-  handleOnChange = (event) => {
+  handleOnChange = (event) => {//on text entry
     this.setState(
       {
-        [event.target.name]: event.target.value,
+        [event.target.name]: event.target.value,//update the variable to the new text
       },
       () => {
-        if (event.target.name === "email") {
+        if (event.target.name === "email") {//if the text box targeted is email, and is empty, display error message
           if (isEmpty(this.state.email)) {
             this.setState({
               emailError: "Email cannot be empty",
@@ -45,7 +45,7 @@ export class Login extends Component {
           }
         }
 
-        if (event.target.name === "password") {
+        if (event.target.name === "password") {//if the text box targeted is password, and is empty, display error message
           if (isEmpty(this.state.password)) {
             this.setState({
               passwordError: "Password cannot be empty",
@@ -61,7 +61,7 @@ export class Login extends Component {
     );
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {//trigger whether the submit button could be pressed
     if (prevState.canSubmit === true) {
       if (this.state.emailOnFocus && this.state.passwordOnFocus) {
         if (
@@ -80,7 +80,7 @@ export class Login extends Component {
     }
   }
 
-  handleInputOnFocus = (event) => {
+  handleInputOnFocus = (event) => {//set variable tracking which boxes have been clicked
     if (!this.state[`${event.target.name}OnFocus`]) {
       this.setState({
         [`${event.target.name}OnFocus`]: true,
@@ -88,7 +88,7 @@ export class Login extends Component {
     }
   };
 
-  handleOnSubmit = async (event) => {
+  handleOnSubmit = async (event) => {//run a login procedure on submit
     event.preventDefault();
 
     try {
@@ -103,12 +103,12 @@ export class Login extends Component {
       let decodedToken = jwtDecode(jwtToken);
       console.log(decodedToken);
 
-      this.props.handleUserLogin(decodedToken);
+      this.props.handleUserLogin(decodedToken);//run token authentication
 
       window.localStorage.setItem("jwtToken", jwtToken);
       toast.success("Login success!");
 
-      this.props.history.push("/movie");
+      this.props.history.push("/movie");//redirect to the main page when logged in
     } catch (e) {
       if (e.response.status === 429) {
         toast.error(e.response.data);
